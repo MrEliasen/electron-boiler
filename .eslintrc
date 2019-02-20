@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "google",
+    "plugin:react/recommended",
+    "plugin:security/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "quotes": [2, "single"],
+    "max-len": "off",
+    "indent": [1, 4, { "SwitchCase": 1 }]
+  },
+  "plugins": [
+    "security",
+    "react"
+  ]
+}

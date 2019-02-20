@@ -1,0 +1,89 @@
+{
+    "name": "electron-boiler",
+    "version": "0.1.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=development electron -r babel-register .",
+        "sass-watch": "node-sass -w -r ./assets/styles/sass/app.scss ./assets/styles/app.css",
+        "sass-compile": "node-sass ./assets/styles/sass/app.scss ./assets/styles/app.css",
+        "build:clean": "rimraf ./compiled",
+        "build:src": "cross-env NODE_ENV=production babel src --out-dir compiled --source-maps cheap-module-source-map",
+        "build:copy": "copyfiles -a -u 1 \"./src/assets/**\" \"compiled\"",
+        "build": "npm run build:clean && npm run build:src && npm run build:copy",
+        "pack": "npm run build && electron-builder --dir",
+        "dist": "npm run dist-win && npm run dist-mac",
+        "dist-win": "npm run build && electron-builder -w",
+        "dist-mac": "npm run build && electron-builder -m"
+    },
+    "repository": "https://github.com/MrEliasen/electron-boiler",
+    "author": "Mark \"SirMrE\" Eliasen",
+    "build": {
+        "productName": "Electron Boiler",
+        "copyright": "Copyright © 2019 Mark \"SirMrE\" Eliasen",
+        "appId": "com.domain.electron-boiler",
+        "files": [
+            "**/*",
+            "node_modules",
+            "!src"
+        ],
+        "dmg": {
+            "contents": [
+                {
+                    "x": 410,
+                    "y": 150,
+                    "type": "link",
+                    "path": "/Applications"
+                },
+                {
+                    "x": 130,
+                    "y": 150,
+                    "type": "file"
+                }
+            ]
+        },
+        "mac": {
+            "icon": "assets/icons/mac/icon.icns"
+        },
+        "win": {
+            "icon": "assets/icons/win/icon.ico"
+        },
+        "linux": {
+            "icon": "assets/icons/png"
+        }
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^10.0.1",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "babel-register": "^6.26.0",
+        "copyfiles": "^2.1.0",
+        "cross-env": "^5.2.0",
+        "electron": "^3.0.7",
+        "electron-builder": "^20.38.3",
+        "electron-reload": "^1.4.0",
+        "eslint": "^5.10.0",
+        "eslint-config-google": "^0.11.0",
+        "eslint-plugin-babel": "^5.3.0",
+        "eslint-plugin-react": "^7.11.1",
+        "eslint-plugin-security": "^1.4.0",
+        "rimraf": "^2.6.2"
+    },
+    "dependencies": {
+        "deepmerge": "^3.2.0",
+        "electron-json-storage": "^4.1.5",
+        "node-sass": "^4.11.0",
+        "react": "^16.6.3",
+        "react-dom": "^16.6.3",
+        "react-redux": "^6.0.0",
+        "react-router": "^4.3.1",
+        "react-router-dom": "^4.3.1",
+        "react-router-redux": "^4.0.8",
+        "react-transition-group": "^2.5.1",
+        "redux": "^4.0.1"
+    }
+}

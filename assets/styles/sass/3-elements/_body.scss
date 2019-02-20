@@ -1,0 +1,21 @@
+/*******************************************************************************
+//
+//
+//
+//  #BODY
+//
+//
+//
+*******************************************************************************/
+
+body {
+    @include font-size($base-font-size, $base-line-height);
+
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    color: $base-font-color;
+    font-family: $base-font;
+    background: map-get($colors, gray);
+    box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
