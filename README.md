@@ -14,3 +14,7 @@ Electron Boiler Plate
 ## Distribution
 
 1. Run `yarn run dist`
+
+## Credit
+
+The sass structure and files is by [@kennytranco](https://github.com/kennytranco)
